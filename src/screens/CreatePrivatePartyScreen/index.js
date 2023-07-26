@@ -1,11 +1,12 @@
 import { StyleSheet, View,  } from "react-native";
 import { Text, Switch,TouchableHighlight, Pressable } from "react-native";
 import React, {useState} from 'react';
+import { useNavigation } from "@react-navigation/native";
 
 
 export default function CreatePrivatePartyScreen() {
  
-
+  
   const [count, setCount] = useState(1);
   const onPressPlus = () =>{
     if(count < 5){
@@ -48,8 +49,11 @@ export default function CreatePrivatePartyScreen() {
  
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
-
-
+  const navigation = useNavigation();
+  const onPressCreate = () => {
+    navigation.navigate("PrivatePartyMaster", 
+    {nbTeam: count, nbPoint: countPoints});
+  };
   return (
     <View style={styles.page}>
         <Text style={styles.title}>Créer une partie privé</Text>
@@ -98,7 +102,7 @@ export default function CreatePrivatePartyScreen() {
           />
         </View>
 
-        <Pressable style={styles.button}>
+        <Pressable style={styles.button} onPress={onPressCreate}>
         <Text>Créer</Text>
         </Pressable>
     </View>
@@ -111,6 +115,7 @@ const styles = StyleSheet.create({
     width: "100%",
     paddingVertical: 40, // temp fix
     padding: 10,
+    backgroundColor: "#2660A4",
 
   },
   title: {
@@ -129,7 +134,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   button: {
-    backgroundColor: "blue",
+    backgroundColor: "#7DB030",
     marginTop: "auto",
     padding: 20,
     alignItems: "center",

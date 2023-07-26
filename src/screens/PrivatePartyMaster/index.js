@@ -1,27 +1,23 @@
 import { StyleSheet, View,  } from "react-native";
 import { Text, TextInput, Pressable } from "react-native";
 import React from 'react';
+import { useRoute, useNavigation } from "@react-navigation/native";
 
 
-
-export default function JoinPrivatePartyScreen() {
- 
-    const [number, onChangeNumber] = React.useState('');
+export default function PrivatePartyMaster() {
+const route = useRoute();
+const nbTeams = route.params?.nbTeam;  
+const nbPoints = route.params?.nbPoint;
 
 
   return (
     <View style={styles.page}>
-        <Text style={styles.title}>Rejoindre une partie privé</Text>
-        <TextInput
-            style={styles.input}
-            onChangeText={onChangeNumber}
-            value={number}
-            placeholder="Entrez le code"
-            keyboardType="numeric"
-        />
-        <Pressable style={styles.button}>
-        <Text>Rejoindre la partie</Text>
-        </Pressable>
+        <Text style={styles.title}>Partieprivé  </Text>
+        <View>
+          <Text>Nombres d'équipe : {nbTeams}</Text>
+          <Text>Nombres de point pour gagner : {nbPoints}</Text>
+        </View>
+       
     </View>
   );
 }

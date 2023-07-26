@@ -39,11 +39,14 @@ const styles = StyleSheet.create({
     width: "100%",
     paddingVertical: 40, // temp fix
     padding: 10,
+    backgroundColor: "#2660A4",
 
   },
   title: {
+    alignItems: "center",
     fontSize:30,
-    
+    color: "#EDF7F6",
+    margin:10,
     
   },
   container: {
@@ -51,7 +54,7 @@ const styles = StyleSheet.create({
     marginTop: 50,
   },
   button: {
-    backgroundColor: "blue",
+    backgroundColor: "#7DB030",
     marginTop: "auto",
     padding: 20,
     alignItems: "center",
