@@ -8,11 +8,11 @@ export default function PrivatePartyMaster() {
 const route = useRoute();
 const nbTeams = route.params?.nbTeam;  
 const nbPoints = route.params?.nbPoint;
-
+const user = route.params?.user;
 
   return (
     <View style={styles.page}>
-        <Text style={styles.title}>Partieprivé  </Text>
+        <Text style={styles.title}>Partieprivé  {user}</Text>
         <View>
           <Text>Nombres d'équipe : {nbTeams}</Text>
           <Text>Nombres de point pour gagner : {nbPoints}</Text>
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize:30,
-    
+    color: "#EDF7F6"
     
   },
   container: {

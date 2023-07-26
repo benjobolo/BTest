@@ -14,7 +14,7 @@ export default function CreatePrivatePartyScreen() {
 
   }
   else{
-
+    setCount(1);
   }
 }
   const onPressMoins = () =>{
@@ -23,7 +23,7 @@ export default function CreatePrivatePartyScreen() {
     } 
     else{
     
-   
+      setCount(5);
   }}
 
 
@@ -34,7 +34,7 @@ export default function CreatePrivatePartyScreen() {
 
   }
   else{
-
+    setCountPoints(5);
   }
 }
   const onPressMoinsPoints = () =>{
@@ -43,7 +43,7 @@ export default function CreatePrivatePartyScreen() {
     } 
     else{
     
-   
+      setCountPoints(40);
   }}
 
  
@@ -52,43 +52,45 @@ export default function CreatePrivatePartyScreen() {
   const navigation = useNavigation();
   const onPressCreate = () => {
     navigation.navigate("PrivatePartyMaster", 
-    {nbTeam: count, nbPoint: countPoints});
+    {nbTeam: count, nbPoint: countPoints, user:1});
   };
   return (
     <View style={styles.page}>
         <Text style={styles.title}>Créer une partie privé</Text>
 
         <Text>Nombre d'équipes ? </Text>
-        <TouchableHighlight onPress={onPressMoins}>
-        <View style={styles.button}>
+      <View style={styles.container}>
+          <TouchableHighlight onPress={onPressMoins} style={styles.button}>
+     
           <Text>-</Text>
-        </View>
+      
         </TouchableHighlight>
 
-        <Text style={styles.countText}>{count || 1}</Text>
+        <Text> {count || 1}</Text>
 
-        <TouchableHighlight onPress={onPressPlus}>
-        <View style={styles.button}>
+        <TouchableHighlight onPress={onPressPlus} style={styles.button}>
+     
           <Text>+</Text>
-        </View>
+   
         </TouchableHighlight>
-
+        </View>
 
         <Text>Nombre de points pour gagner la partie </Text>
-        <TouchableHighlight onPress={onPressMoinsPoints}>
-        <View style={styles.button}>
+        <View style={styles.container}>
+        <TouchableHighlight onPress={onPressMoinsPoints} style={styles.button}>
+       
           <Text>-</Text>
-        </View>
+        
         </TouchableHighlight>
-
+    
         <Text style={styles.countText}>{countPoints || 5}</Text>
 
-        <TouchableHighlight onPress={onPressPlusPoints}>
-        <View style={styles.button}>
+        <TouchableHighlight onPress={onPressPlusPoints} style={styles.button}>
+      
           <Text>+</Text>
-        </View>
+       
         </TouchableHighlight>
-
+        </View>
 
         <View style={styles.container}>
           <Text>Activer les malus ?</Text>
@@ -102,7 +104,7 @@ export default function CreatePrivatePartyScreen() {
           />
         </View>
 
-        <Pressable style={styles.button} onPress={onPressCreate}>
+        <Pressable style={styles.buttonCreate} onPress={onPressCreate}>
         <Text>Créer</Text>
         </Pressable>
     </View>
@@ -113,31 +115,40 @@ const styles = StyleSheet.create({
   page: {
     flex: 1,
     width: "100%",
-    paddingVertical: 40, // temp fix
+    paddingVertical: 40, 
     padding: 10,
     backgroundColor: "#2660A4",
 
   },
   title: {
     fontSize:30,
-    
+    color: "#EDF7F6"
     
   },
   container: {
     marginTop: 30,
-    alignItems: "flex-start"
+    alignItems:'center',
+    flexDirection: 'row',
+    widht:'50%',
+    marginHorizontal:"25%",
+
 
   },
+
   button: {
-    alignItems: 'center',
-    backgroundColor: '#DDDDDD',
-    padding: 10,
+    backgroundColor: "#735F3D",
+    marginTop: "auto",
+    padding: 20,
+    alignItems: "center",
+    margin: 10,
+
   },
-  button: {
+  buttonCreate: {
     backgroundColor: "#7DB030",
     marginTop: "auto",
     padding: 20,
     alignItems: "center",
     margin: 10,
+
   }
 });

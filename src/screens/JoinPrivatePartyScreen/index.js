@@ -1,13 +1,18 @@
 import { StyleSheet, View,  } from "react-native";
 import { Text, TextInput, Pressable } from "react-native";
 import React from 'react';
+import { useNavigation } from "@react-navigation/native";
 
 
 
 export default function JoinPrivatePartyScreen() {
  
     const [number, onChangeNumber] = React.useState('');
-
+    const navigation = useNavigation();
+    const onPressJoin = () => {
+      navigation.navigate("PrivatePartyMaster", 
+      {user:0});
+    };
 
   return (
     <View style={styles.page}>
@@ -19,7 +24,7 @@ export default function JoinPrivatePartyScreen() {
             placeholder="Entrez le code"
             keyboardType="numeric"
         />
-        <Pressable style={styles.button}>
+        <Pressable style={styles.button} onPress={onPressJoin}>
         <Text>Rejoindre la partie</Text>
         </Pressable>
     </View>
